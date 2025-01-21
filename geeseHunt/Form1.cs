@@ -31,6 +31,7 @@ namespace geeseHunt
         bool upPressed = false;
         bool downPressed = false;
         bool spacePressed = false;
+        bool enterPressed = false;
 
         int score = 0;
 
@@ -40,7 +41,7 @@ namespace geeseHunt
         int geeseSpeed = 4;
         int ammo = 3;
 
-        int grassHeight = 100;
+        int grassHeight = 50;
 
         SoundPlayer shoot = new SoundPlayer(Properties.Resources.shot);
 
@@ -98,6 +99,9 @@ namespace geeseHunt
                 case Keys.Space:
                     spacePressed = true;
                     break;
+                case Keys.Enter:
+                    enterPressed = true;
+                    break; 
             }
 
         }
@@ -120,6 +124,9 @@ namespace geeseHunt
                     break;
                 case Keys.Space:
                     spacePressed = false;
+                    break;
+                case Keys.Enter:
+                    enterPressed = false;
                     break;
             }
 
@@ -182,6 +189,10 @@ namespace geeseHunt
                 }
             }
 
+            if (ammo == 0 && enterPressed)
+            {
+                ammo = 3;
+            }
              
 
 
@@ -209,6 +220,7 @@ namespace geeseHunt
                 geeses[i] = new Rectangle(x, y, 10, 10);
 
             }  */
+
 
             //Move Goose 
             int randValue = randGen.Next(-10, 10);

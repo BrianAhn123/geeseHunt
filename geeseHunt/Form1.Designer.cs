@@ -44,7 +44,7 @@
             // scoreLabel
             // 
             this.scoreLabel.AutoSize = true;
-            this.scoreLabel.Location = new System.Drawing.Point(366, 364);
+            this.scoreLabel.Location = new System.Drawing.Point(389, 403);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(14, 16);
             this.scoreLabel.TabIndex = 0;
@@ -53,7 +53,7 @@
             // ammoLabel
             // 
             this.ammoLabel.AutoSize = true;
-            this.ammoLabel.Location = new System.Drawing.Point(22, 364);
+            this.ammoLabel.Location = new System.Drawing.Point(12, 403);
             this.ammoLabel.Name = "ammoLabel";
             this.ammoLabel.Size = new System.Drawing.Size(44, 16);
             this.ammoLabel.TabIndex = 1;
@@ -64,10 +64,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(782, 403);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ammoLabel);
             this.Controls.Add(this.scoreLabel);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
