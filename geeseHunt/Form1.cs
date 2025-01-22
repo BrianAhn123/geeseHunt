@@ -22,7 +22,7 @@ namespace geeseHunt
 
 
         //Geese 
-        Rectangle goose1 = new Rectangle(10, 200, 50, 50);
+        Rectangle goose1 = new Rectangle(300, 100, 50, 50);
         List<Rectangle> geeses = new List<Rectangle>();
 
         //keys 
@@ -38,7 +38,9 @@ namespace geeseHunt
         int pause = 150;
 
         int crosshairSpeed = 10;
-        int geeseSpeed = 4;
+        int geesexSpeed = 4;
+        int geeseySpeed = 6;
+        int framestoMove = 20;
         int ammo = 3;
 
         int grassHeight = 50;
@@ -177,7 +179,7 @@ namespace geeseHunt
                 if (spacePressed && crosshair.IntersectsWith(goose1))
                 {
                     spacePressed = false;
-                    score++;
+                    score += 100;
                     ammo--;
                     shoot.Play();
                 }
@@ -225,15 +227,15 @@ namespace geeseHunt
             //Move Goose 
             int randValue = randGen.Next(-10, 10);
 
-            for (int i = 0; i < randValue; i++)
+            goose1.X += geesexSpeed;
+            goose1.Y += geeseySpeed;
+            framestoMove--;
+            if(framestoMove == 0)
             {
-                int x = randValue + geeseSpeed;
-                int y = randValue + geeseSpeed;
-                goose1 = new Rectangle(x, y, 50, 50);
-                
+                framestoMove = 40;
+                geesexSpeed = 2;
+                geeseySpeed = -4;
             }
-
-
 
 
 
