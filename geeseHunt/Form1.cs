@@ -23,6 +23,7 @@ namespace geeseHunt
 
         //Geese 
         Rectangle goose1 = new Rectangle(300, 100, 50, 50);
+        Rectangle goose2 = new Rectangle(300, 100, 50, 50);
         List<Rectangle> geeses = new List<Rectangle>();
 
         //keys 
@@ -41,6 +42,11 @@ namespace geeseHunt
         int geesexSpeed = 4;
         int geeseySpeed = 6;
         int framestoMove = 20;
+
+        int geese2xSpeed = -4;
+        int geese2ySpeed = -6;
+        int frames2toMove = 20;
+
         int ammo = 3;
 
         int grassHeight = 50;
@@ -64,6 +70,8 @@ namespace geeseHunt
 
             //draw goose 
             e.Graphics.FillRectangle(whiteBrush, goose1);
+
+            e.Graphics.FillRectangle(whiteBrush, goose2);
 
             for (int i = 0; i < geeses.Count; i++)
             {
@@ -183,6 +191,15 @@ namespace geeseHunt
                     ammo--;
                     shoot.Play();
                 }
+
+                if (spacePressed && crosshair.IntersectsWith(goose2))
+                {
+                    spacePressed = false;
+                    score += 100;
+                    ammo--;
+                    shoot.Play();
+                }
+
                 else if (spacePressed)
                 {
                     spacePressed = false;
@@ -195,7 +212,7 @@ namespace geeseHunt
             {
                 ammo = 3;
             }
-             
+
 
 
 
@@ -224,28 +241,50 @@ namespace geeseHunt
             }  */
 
 
-            //Move Goose 
+            //Move Goose1
+
             int randValue = randGen.Next(-10, 10);
             int randValue2 = randGen.Next(-10, 10);
-            int randFrames = randGen.Next(10, 30);
+            int randFrame = randGen.Next(5, 30);
+            int randFrame2 = randGen.Next(5, 30);
+
 
             goose1.X += geesexSpeed;
             goose1.Y += geeseySpeed;
             framestoMove--;
             if(framestoMove == 0 )
             {
-                framestoMove = randFrames;
-                geesexSpeed = randValue;
-                geeseySpeed = randValue2;
+                framestoMove = randValue;
+                geesexSpeed = randValue2;
+                geeseySpeed = randFrame;
 
-                while (goose1.X > this.Width || goose1.Y > this.Height - grassHeight || goose1.X < 0 || goose1.Y < 0)
+               /* while (goose1.X > this.Width || goose1.Y > this.Height - grassHeight || goose1.X < 0 || goose1.Y < 0)
+                {
+                    geesexSpeed = randValue;
+                    geeseySpeed = randValue;
+                    framestoMove = randFrame;
+                }  */
+            }
+
+            //move goose2 
+
+            goose2.X += geese2xSpeed;
+            goose2.Y += geese2ySpeed;
+            frames2toMove--;
+             
+            if (frames2toMove == 0)
+            {
+                frames2toMove = randValue;
+                geese2xSpeed = randValue2;
+                geese2ySpeed = randFrame2;
+
+               /* while (goose1.X > this.Width || goose1.Y > this.Height - grassHeight || goose1.X < 0 || goose1.Y < 0)
                 {
                     geesexSpeed = randGen.Next(-10, 10);
                     geeseySpeed = randGen.Next(-10, 10);
                     framestoMove = randGen.Next(10, 30);
-                }
+                } */
             }
-           
 
 
 
