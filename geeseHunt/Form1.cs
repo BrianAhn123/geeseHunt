@@ -242,7 +242,7 @@ namespace geeseHunt
 
 
             //Move Goose1
-
+            3
             int randValue = randGen.Next(-10, 10);
             int randValue2 = randGen.Next(-10, 10);
             int randFrame = randGen.Next(5, 30);
