@@ -226,17 +226,26 @@ namespace geeseHunt
 
             //Move Goose 
             int randValue = randGen.Next(-10, 10);
+            int randValue2 = randGen.Next(-10, 10);
+            int randFrames = randGen.Next(10, 30);
 
             goose1.X += geesexSpeed;
             goose1.Y += geeseySpeed;
             framestoMove--;
-            if(framestoMove == 0)
+            if(framestoMove == 0 )
             {
-                framestoMove = 40;
-                geesexSpeed = 2;
-                geeseySpeed = -4;
-            }
+                framestoMove = randFrames;
+                geesexSpeed = randValue;
+                geeseySpeed = randValue2;
 
+                while (goose1.X > this.Width || goose1.Y > this.Height - grassHeight || goose1.X < 0 || goose1.Y < 0)
+                {
+                    geesexSpeed = randGen.Next(-10, 10);
+                    geeseySpeed = randGen.Next(-10, 10);
+                    framestoMove = randGen.Next(10, 30);
+                }
+            }
+           
 
 
 
