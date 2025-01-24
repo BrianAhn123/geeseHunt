@@ -10,7 +10,19 @@ using System.Windows.Forms;
 using System.Media;
 
 namespace geeseHunt
-{
+{   //Notes
+    //Was able to get borders somewhat working
+    //but bottom and right border do not work and when goose 1 hits the corner it forces through the border 
+
+    //goose2 just goes up and past the border 
+    
+    // planned to add powerups after goose were done
+    // more sounds but had no time 
+    // gun works as well as reloading 
+    // points as well work as planned 
+
+    //overall code if no where near finished and needed more planning
+
     public partial class Form1 : Form
     {
         //Player 
@@ -214,76 +226,72 @@ namespace geeseHunt
             }
 
 
-
-
-            //spawn goose
-
-
-            /* int randValue = randGen.Next(1, 101);
-
-            if (randValue > 95)
-            {
-                int x = randGen.Next(30, this.Width);
-                Rectangle newGeese = new Rectangle(x, 400, 10, 2);
-                geeses.Add(newGeese);
-            } */
-
-            //move duck 
-
-
-
-            /*for (int i = 0; i < geeses.Count; i++)
-            {
-                int y = geeses[i].Y + geeseSpeed;
-                int x = geeses[i].Y + geeseSpeed;
-                geeses[i] = new Rectangle(x, y, 10, 10);
-
-            }  */
-
-
             //Move Goose1
-            3
             int randValue = randGen.Next(-10, 10);
             int randValue2 = randGen.Next(-10, 10);
             int randFrame = randGen.Next(5, 30);
-            int randFrame2 = randGen.Next(5, 30);
-
 
             goose1.X += geesexSpeed;
             goose1.Y += geeseySpeed;
             framestoMove--;
-            if(framestoMove == 0 )
-            {
-                framestoMove = randValue;
-                geesexSpeed = randValue2;
-                geeseySpeed = randFrame;
 
-               /* while (goose1.X > this.Width || goose1.Y > this.Height - grassHeight || goose1.X < 0 || goose1.Y < 0)
+                if (goose1.X > 0 && goose1.X < this.Width - goose1.Width && goose1.Y > 0 && goose1.Y < this.Height - 50)
                 {
-                    geesexSpeed = randValue;
-                    geeseySpeed = randValue;
-                    framestoMove = randFrame;
-                }  */
-            }
+                    if (framestoMove == 0)
+                    {
+                        geesexSpeed = randValue;
+                        geeseySpeed = randValue2;
+                        framestoMove = randFrame;
+                    }
+                }
+                else
+                {
+                    if (goose1.X < 0)
+                    {
+                        geesexSpeed = randGen.Next(1, 10);
+                        geeseySpeed = randGen.Next(-10, -1);
+                        framestoMove = randGen.Next(5, 30);
+                    }
+
+                    if (goose1.Y < 0)
+                    {
+                        geesexSpeed = randGen.Next(-10, -1);
+                        geeseySpeed = randGen.Next(1, 10);
+                        framestoMove = randGen.Next(5, 30);
+                    }
+
+                    if (goose1.X > this.Width - goose1.Width)
+                    {
+                        geesexSpeed = randGen.Next(1, 10);
+                        geeseySpeed = randGen.Next(-10, -1);
+                        framestoMove = randGen.Next(5, 30);
+                    }
+
+
+                    if (goose1.Y > this.Height - 50)
+                    {
+                        geesexSpeed = randGen.Next(-10, -1);
+                        geeseySpeed = randGen.Next(1, 10);
+                        framestoMove = randGen.Next(5, 30);
+                    }
+                }
+            
 
             //move goose2 
-
             goose2.X += geese2xSpeed;
             goose2.Y += geese2ySpeed;
             frames2toMove--;
-             
-            if (frames2toMove == 0)
-            {
-                frames2toMove = randValue;
-                geese2xSpeed = randValue2;
-                geese2ySpeed = randFrame2;
 
-               /* while (goose1.X > this.Width || goose1.Y > this.Height - grassHeight || goose1.X < 0 || goose1.Y < 0)
+            if (goose2.X > 0 && goose2.X < this.Width - goose2.Width && goose2.Y > 0 && goose2.Y < this.Height - goose1.Height)
+            {
+                
+
+                if (frames2toMove == 0)
                 {
-                    geesexSpeed = randGen.Next(-10, 10);
-                    geeseySpeed = randGen.Next(-10, 10);
-                    framestoMove = randGen.Next(10, 30);
-                } */
+                    frames2toMove = randFrame;
+                    geese2xSpeed = randValue2;
+                    geese2ySpeed = randValue;
+                }
             }
 
 
